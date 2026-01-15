@@ -14,6 +14,8 @@ spec:
       labels:
         app: workload-security-evaluator
     spec:
+      securityContext:
+        runAsNonRoot: true
       containers:
       - image: confusedcrib/workload-security-evaluator:latest
         name: workload-security-evaluator
@@ -22,8 +24,6 @@ spec:
           value: AKIAIOSFODNN72HYSDD8
         - name: AWS_SECRET_ACCESS_KEY
           value: wJalrXUtnFEMI/K7MDENG/bPxRfiCYeh2g7ykyu8
-        securityContext:
-          privileged: true
         volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-socket
